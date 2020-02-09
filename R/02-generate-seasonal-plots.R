@@ -1,3 +1,4 @@
+# Explore DF
 glimpse(df)
 
 # Daily GAP
@@ -15,7 +16,7 @@ daily_gap <- df %>%
   labs(x = "Year", y = "Global Active Power", title = "Daily Global Active Power") +
   theme_ft_rc()
 
-daily_gap
+print(daily_gap)
 
 # Weekly GAP
 weekly_gap <- df %>%
@@ -31,7 +32,7 @@ weekly_gap <- df %>%
   scale_color_distiller(palette = "Spectral") +
   theme_ft_rc()
 
-weekly_gap
+print(weekly_gap)
 
 # Monthly GAP
 monthly_gap <- df %>%
@@ -45,30 +46,4 @@ monthly_gap <- df %>%
   scale_color_distiller(palette = "Spectral") +
   theme_ft_rc()
 
-monthly_gap
-
-monthly_gap_data <- df %>%
-  group_by(year, month) %>%
-  summarise(global_active_power = median(global_active_power, na.rm = TRUE),
-            date = min(date)) %>% 
-  ungroup %>%
-  select(global_active_power) %>%
-  ts(start = c(2006,12), end = c(2010, 11),  frequency = 12)
-
-ggAcf(monthly_gap_data)
-
-map_chr(monthly_data, class)
-
-m <- prophet(monthly_data)
-
-future <- make_future_dataframe(m, periods = 12)
-tail(future)
-
-forecast <- predict(m, future)
-tail(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')])
-
-plot(m, forecast)
-
-prophet_plot_components(m, forecast)
-
-dyplot.prophet(m, forecast)
+print(monthly_gap)

@@ -7,3 +7,4 @@ rm(list = ls())
   
 source("00-load-packages.R")
 source("01-read-raw-data.R")
+source("02-generate-seasonal-plots.R")
