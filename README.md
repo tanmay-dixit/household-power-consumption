@@ -1,2 +1,2 @@
 # household-power-consumption
-Time series analysis of household power consumption from 2006-2010
+Analysis of high frequency time series data for household power consumption from 2006-2010
